@@ -11,11 +11,11 @@ A small tool for performing active and historical DNS checks on a domain. This c
 ## 🚀 Installation
 Prerequisites
 - Rust & Cargo (Install via rustup)
-- An AlienVault OTX API Key (Sign up at otx.alienvault.com)
+- An AlienVault OTX API Key (Sign up at otx.alienvault.com) - Not a hard requirement as the endpoint is avaliable without a valid API key. 
 
 Clone & Build
 ```
-git clone https://github.com/RedHeadSec/dns-check.git
+git clone https://github.com/RedHeadSec/Domain-Check.rs.git
 cd dns-lookup-tool
 cargo build --release
 ```
