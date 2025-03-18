@@ -34,6 +34,19 @@ fn main() {
         println!("{}", cname_result);
     }
 
+    if let Ok(mail) = dns::resolve_mx_record(domain) {
+        let mail_result = format!("\n📧 MX Record:\n  - {}\n", mail);
+        output.push_str(&mail_result);
+        println!("{}", mail_result);
+    }
+
+    if let Ok(ns) = dns::resolve_ns_record(domain) {
+        let ns_result = format!("\n🌐  Nameservers Record:\n  - {}\n", ns);
+        output.push_str(&ns_result);
+        println!("{}", ns_result);
+    }
+        
+
     // Historical Subdomains Lookup
     if let Ok(subdomains) = historical_dns::fetch_historical_subdomains(domain, av_api_key) {
         let subdomain_results = format!("\n📜 Historical Subdomains:\n{}\n", subdomains.iter().map(|s| format!("  - {}", s)).collect::<Vec<_>>().join("\n"));

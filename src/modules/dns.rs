@@ -42,20 +42,32 @@ pub fn resolve_cname(domain: &str) -> Result<String, ResolveError> {
     }
 }
 
-/// Resolves MX (Mail Exchange) records
-pub fn resolve_mx_record(domain: &str) -> Result<Vec<String>, ResolveError> {
+/// Resolves MX (Mail Exchange) record - returns first found or error
+pub fn resolve_mx_record(domain: &str) -> Result<String, ResolveError> {
     let resolver = Resolver::new(ResolverConfig::default(), ResolverOpts::default())?;
     let response = resolver.mx_lookup(domain)?;
     
-    let mx_records: Vec<String> = response.iter().map(|r| format!("{} -> {}", r.preference(), r.exchange())).collect();
-    Ok(mx_records)
+    if let Some(mx) = response.iter().next() {
+        Ok(format!("{} -> {}", mx.preference(), mx.exchange()))
+    } else {
+        Err(ResolveError::from(std::io::Error::new(
+            std::io::ErrorKind::NotFound,
+            "No MX record found",
+        )))
+    }
 }
 
-/// Resolves NS (Name Server) records
-pub fn resolve_ns_record(domain: &str) -> Result<Vec<String>, ResolveError> {
+/// Resolves NS (Name Server) record - returns first found or error
+pub fn resolve_ns_record(domain: &str) -> Result<String, ResolveError> {
     let resolver = Resolver::new(ResolverConfig::default(), ResolverOpts::default())?;
     let response = resolver.ns_lookup(domain)?;
     
-    let ns_records: Vec<String> = response.iter().map(|r| r.to_string()).collect();
-    Ok(ns_records)
+    if let Some(ns) = response.iter().next() {
+        Ok(ns.to_string())
+    } else {
+        Err(ResolveError::from(std::io::Error::new(
+            std::io::ErrorKind::NotFound,
+            "No NS record found",
+        )))
+    }
 }
