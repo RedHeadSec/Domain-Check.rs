@@ -22,17 +22,19 @@ cargo build --release
 ## 🛠 Usage
 Basic DNS Lookup
 
-`cargo run -- --domain example.com --api-key YOUR_API_KEY`
+`DNS-Check --domain example.com`
 
 Note: The API key does not appear to be needed to pull from the passive records endpoint, so it can be omitted unless you run into permission issues. 
 
 Save Results to a File
 
-`cargo run -- --domain example.com --api-key YOUR_API_KEY --save --file my_results`
+`DNS-Check --domain example.com  --save --file my_results`
 
 - 🔹 Saves the output to my_results.txt.
 - 🔹 If no file name is provided, defaults to results.txt.
 
+## To-do
+Implement SecurityTrails Records
 
 ## 📄 License
 MIT License - Use freely, but give credit please. 
