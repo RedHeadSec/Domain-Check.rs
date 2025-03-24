@@ -12,7 +12,7 @@ struct CrtShEntry {
 pub fn fetch_subdomains_from_crtsh(domain: &str) -> Result<Vec<String>, Box<dyn Error>> {
     let url = format!("https://crt.sh/?q=%.{}&output=json", domain);
     let client = Client::builder()
-        .timeout(Duration::from_secs(15))
+        .timeout(Duration::from_secs(60))
         .build()?;
 
     let response = client.get(&url).send();
