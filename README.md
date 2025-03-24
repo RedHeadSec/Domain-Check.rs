@@ -26,6 +26,8 @@ Basic DNS Lookup
 
 Note: The API key does not appear to be needed to pull from the passive records endpoint, so it can be omitted unless you run into permission issues. 
 
+![image](https://github.com/user-attachments/assets/0f0cfb41-919f-41c2-972e-e25ef360af95)
+
 Save Results to a File
 
 `DNS-Check --domain example.com  --save --file my_results`
