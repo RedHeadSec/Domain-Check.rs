@@ -22,11 +22,12 @@ cargo build --release
 ## 🛠 Usage
 Basic DNS Lookup
 
-`DNS-Check --domain example.com`
+`target/release/Domain-Check -d redheadsec.tech -A OTX_KEY`
 
 Note: An API key is now required to hit the passive_dns endpoint, else you will see 429 response codes.
 
-![image](https://github.com/user-attachments/assets/0f0cfb41-919f-41c2-972e-e25ef360af95)
+<img width="1359" height="1099" alt="image" src="https://github.com/user-attachments/assets/0753eaef-e289-461d-9d66-5ff60c74d432" />
+
 
 Save Results to a File
 
