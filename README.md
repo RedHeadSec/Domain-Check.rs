@@ -24,7 +24,7 @@ Basic DNS Lookup
 
 `DNS-Check --domain example.com`
 
-Note: The API key does not appear to be needed to pull from the passive records endpoint, so it can be omitted unless you run into permission issues. 
+Note: An API key is now required to hit the passive_dns endpoint, else you will see 429 response codes.
 
 ![image](https://github.com/user-attachments/assets/0f0cfb41-919f-41c2-972e-e25ef360af95)
 
